@@ -11,6 +11,22 @@
 		ACDA2132297F38540009F27F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDA2131297F38540009F27F /* ContentView.swift */; };
 		ACDA2134297F38550009F27F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACDA2133297F38550009F27F /* Assets.xcassets */; };
 		ACDA2137297F38550009F27F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACDA2136297F38550009F27F /* Preview Assets.xcassets */; };
+		ACDA2140297F38800009F27F /* SwiftSyntax in Frameworks */ = {isa = PBXBuildFile; productRef = ACDA213F297F38800009F27F /* SwiftSyntax */; };
+		ACDA2142297F38800009F27F /* SwiftSyntaxBuilder in Frameworks */ = {isa = PBXBuildFile; productRef = ACDA2141297F38800009F27F /* SwiftSyntaxBuilder */; };
+		ACDA2144297F38800009F27F /* SwiftSyntaxParser in Frameworks */ = {isa = PBXBuildFile; productRef = ACDA2143297F38800009F27F /* SwiftSyntaxParser */; };
+		ACDA2147297F3B2B0009F27F /* Holders.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDA2146297F3B2B0009F27F /* Holders.swift */; };
+		ACDA2149297F3B5E0009F27F /* ConvertedToHolders.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDA2148297F3B5E0009F27F /* ConvertedToHolders.swift */; };
+		ACDA214B297F3B7D0009F27F /* AccessLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDA214A297F3B7D0009F27F /* AccessLevel.swift */; };
+		ACDA214D297F3B940009F27F /* DetailComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDA214C297F3B940009F27F /* DetailComponentView.swift */; };
+		ACDA214F297F3BAB0009F27F /* ComponentSettingValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDA214E297F3BAB0009F27F /* ComponentSettingValues.swift */; };
+		ACDA2151297F3BC20009F27F /* BuildFileMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDA2150297F3BC20009F27F /* BuildFileMonitor.swift */; };
+		ACDA2153297F3BD80009F27F /* HolderToStringConverters.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDA2152297F3BD80009F27F /* HolderToStringConverters.swift */; };
+		ACDA2155297F3BF50009F27F /* TokenVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDA2154297F3BF50009F27F /* TokenVisitor.swift */; };
+		ACDA2157297F3C240009F27F /* SyntaxNodeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDA2156297F3C240009F27F /* SyntaxNodeType.swift */; };
+		ACDA2159297F3C380009F27F /* TokenKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDA2158297F3C380009F27F /* TokenKind.swift */; };
+		ACDA215B297F3C4E0009F27F /* SyntaxTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDA215A297F3C4E0009F27F /* SyntaxTag.swift */; };
+		ACDA215D297F3C930009F27F /* SyntaxArrayParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDA215C297F3C930009F27F /* SyntaxArrayParser.swift */; };
+		ACDA215F297F3CBE0009F27F /* OptionalTypeKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDA215E297F3CBE0009F27F /* OptionalTypeKind.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +36,19 @@
 		ACDA2133297F38550009F27F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ACDA2136297F38550009F27F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		ACDA2138297F38550009F27F /* DiagramForThesis.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DiagramForThesis.entitlements; sourceTree = "<group>"; };
+		ACDA2146297F3B2B0009F27F /* Holders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Holders.swift; sourceTree = "<group>"; };
+		ACDA2148297F3B5E0009F27F /* ConvertedToHolders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertedToHolders.swift; sourceTree = "<group>"; };
+		ACDA214A297F3B7D0009F27F /* AccessLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessLevel.swift; sourceTree = "<group>"; };
+		ACDA214C297F3B940009F27F /* DetailComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailComponentView.swift; sourceTree = "<group>"; };
+		ACDA214E297F3BAB0009F27F /* ComponentSettingValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentSettingValues.swift; sourceTree = "<group>"; };
+		ACDA2150297F3BC20009F27F /* BuildFileMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildFileMonitor.swift; sourceTree = "<group>"; };
+		ACDA2152297F3BD80009F27F /* HolderToStringConverters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolderToStringConverters.swift; sourceTree = "<group>"; };
+		ACDA2154297F3BF50009F27F /* TokenVisitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenVisitor.swift; sourceTree = "<group>"; };
+		ACDA2156297F3C240009F27F /* SyntaxNodeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyntaxNodeType.swift; sourceTree = "<group>"; };
+		ACDA2158297F3C380009F27F /* TokenKind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenKind.swift; sourceTree = "<group>"; };
+		ACDA215A297F3C4E0009F27F /* SyntaxTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyntaxTag.swift; sourceTree = "<group>"; };
+		ACDA215C297F3C930009F27F /* SyntaxArrayParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyntaxArrayParser.swift; sourceTree = "<group>"; };
+		ACDA215E297F3CBE0009F27F /* OptionalTypeKind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalTypeKind.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +56,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACDA2144297F38800009F27F /* SwiftSyntaxParser in Frameworks */,
+				ACDA2140297F38800009F27F /* SwiftSyntax in Frameworks */,
+				ACDA2142297F38800009F27F /* SwiftSyntaxBuilder in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,6 +86,7 @@
 			children = (
 				ACDA212F297F38540009F27F /* DiagramForThesisApp.swift */,
 				ACDA2131297F38540009F27F /* ContentView.swift */,
+				ACDA2145297F3B0A0009F27F /* RAGESS */,
 				ACDA2133297F38550009F27F /* Assets.xcassets */,
 				ACDA2138297F38550009F27F /* DiagramForThesis.entitlements */,
 				ACDA2135297F38550009F27F /* Preview Content */,
@@ -67,6 +100,26 @@
 				ACDA2136297F38550009F27F /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		ACDA2145297F3B0A0009F27F /* RAGESS */ = {
+			isa = PBXGroup;
+			children = (
+				ACDA2146297F3B2B0009F27F /* Holders.swift */,
+				ACDA2148297F3B5E0009F27F /* ConvertedToHolders.swift */,
+				ACDA214A297F3B7D0009F27F /* AccessLevel.swift */,
+				ACDA214C297F3B940009F27F /* DetailComponentView.swift */,
+				ACDA214E297F3BAB0009F27F /* ComponentSettingValues.swift */,
+				ACDA2150297F3BC20009F27F /* BuildFileMonitor.swift */,
+				ACDA2152297F3BD80009F27F /* HolderToStringConverters.swift */,
+				ACDA2154297F3BF50009F27F /* TokenVisitor.swift */,
+				ACDA2156297F3C240009F27F /* SyntaxNodeType.swift */,
+				ACDA2158297F3C380009F27F /* TokenKind.swift */,
+				ACDA215A297F3C4E0009F27F /* SyntaxTag.swift */,
+				ACDA215C297F3C930009F27F /* SyntaxArrayParser.swift */,
+				ACDA215E297F3CBE0009F27F /* OptionalTypeKind.swift */,
+			);
+			path = RAGESS;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -85,6 +138,11 @@
 			dependencies = (
 			);
 			name = DiagramForThesis;
+			packageProductDependencies = (
+				ACDA213F297F38800009F27F /* SwiftSyntax */,
+				ACDA2141297F38800009F27F /* SwiftSyntaxBuilder */,
+				ACDA2143297F38800009F27F /* SwiftSyntaxParser */,
+			);
 			productName = DiagramForThesis;
 			productReference = ACDA212C297F38540009F27F /* DiagramForThesis.app */;
 			productType = "com.apple.product-type.application";
@@ -113,6 +171,9 @@
 				Base,
 			);
 			mainGroup = ACDA2123297F38540009F27F;
+			packageReferences = (
+				ACDA213E297F38800009F27F /* XCRemoteSwiftPackageReference "swift-syntax" */,
+			);
 			productRefGroup = ACDA212D297F38540009F27F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -139,8 +200,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACDA2153297F3BD80009F27F /* HolderToStringConverters.swift in Sources */,
+				ACDA2159297F3C380009F27F /* TokenKind.swift in Sources */,
 				ACDA2132297F38540009F27F /* ContentView.swift in Sources */,
+				ACDA2151297F3BC20009F27F /* BuildFileMonitor.swift in Sources */,
+				ACDA214F297F3BAB0009F27F /* ComponentSettingValues.swift in Sources */,
+				ACDA2155297F3BF50009F27F /* TokenVisitor.swift in Sources */,
+				ACDA2157297F3C240009F27F /* SyntaxNodeType.swift in Sources */,
+				ACDA2149297F3B5E0009F27F /* ConvertedToHolders.swift in Sources */,
+				ACDA215B297F3C4E0009F27F /* SyntaxTag.swift in Sources */,
+				ACDA215D297F3C930009F27F /* SyntaxArrayParser.swift in Sources */,
+				ACDA2147297F3B2B0009F27F /* Holders.swift in Sources */,
+				ACDA214B297F3B7D0009F27F /* AccessLevel.swift in Sources */,
 				ACDA2130297F38540009F27F /* DiagramForThesisApp.swift in Sources */,
+				ACDA215F297F3CBE0009F27F /* OptionalTypeKind.swift in Sources */,
+				ACDA214D297F3B940009F27F /* DetailComponentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,6 +406,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		ACDA213E297F38800009F27F /* XCRemoteSwiftPackageReference "swift-syntax" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-syntax";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.50700.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		ACDA213F297F38800009F27F /* SwiftSyntax */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ACDA213E297F38800009F27F /* XCRemoteSwiftPackageReference "swift-syntax" */;
+			productName = SwiftSyntax;
+		};
+		ACDA2141297F38800009F27F /* SwiftSyntaxBuilder */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ACDA213E297F38800009F27F /* XCRemoteSwiftPackageReference "swift-syntax" */;
+			productName = SwiftSyntaxBuilder;
+		};
+		ACDA2143297F38800009F27F /* SwiftSyntaxParser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ACDA213E297F38800009F27F /* XCRemoteSwiftPackageReference "swift-syntax" */;
+			productName = SwiftSyntaxParser;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = ACDA2124297F38540009F27F /* Project object */;
 }
