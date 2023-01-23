@@ -298,19 +298,19 @@ struct ProtocolHolder: Nameable, AccessControllable, TypeHolder, Extensionable {
     var name: String = ""
     var accessLevel: AccessLevel = .internal
     
-    var conformingProtocolNames = [String]()
+    var conformingProtocolNames: [String] = [String]()
     
-    var associatedTypes = [AssociatedType]()
+    var associatedTypes: [AssociatedType] = [AssociatedType]()
     
-    var typealiases = [TypealiasHolder]()
+    var typealiases: [TypealiasHolder] = [TypealiasHolder]()
     
-    var initializers = [InitializerHolder]()
+    var initializers: [InitializerHolder] = [InitializerHolder]()
     
-    var variables = [VariableHolder]()
+    var variables: [VariableHolder] = [VariableHolder]()
     
-    var functions = [FunctionHolder]()
+    var functions: [FunctionHolder] = [FunctionHolder]()
     
-    var extensions = [ExtensionHolder]()
+    var extensions: [ExtensionHolder] = [ExtensionHolder]()
     
     struct AssociatedType {
         var name: String

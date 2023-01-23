@@ -11,97 +11,97 @@ import SwiftSyntax
 final class TokenVisitor: SyntaxRewriter {
     
     // visitPre()、visitPost()で検査したnodeの種類を記憶するためのスタック配列
-    private var syntaxNodeTypeStack = [SyntaxNodeType]()
+    private var syntaxNodeTypeStack: [SyntaxNodeType] = [SyntaxNodeType]()
     // syntaxNodeTypeStackに最後に追加された要素のインデックス
     // pushSyntaxNodeTypeStack()で1増える
     // popSyntaxNodeTypeStack()で1減る
-    private var currentPositionInStack = -1
+    private var currentPositionInStack: Int = -1
     
     // 抽象構文木をvisitして抽出した結果の配列
     // getResultArray()で出力する
-    private var resultArray = [String]()
+    private var resultArray: [String] = [String]()
     
     // enumの連想値の型を宣言しているとき、":"より後が連想値の型
     // ":"より前の文字列を抽出しないために使う
     // このフラグがtrueのときだけ型を抽出する
     // visitPre()でfalseに初期化する
     // visit()内で複数の連想値を区別する "," を検査したときもfalseに初期化する
-    private var passedColonOfEnumAssociatedValueFlag = false
+    private var passedColonOfEnumAssociatedValueFlag: Bool = false
     
     // variableの@Stateなどの文字列を一時的に保存する
     // @Stateの場合、@とStateが別のtokenなため
     // visitPre()で""に初期化する
-    private var variableCustomAttribute = ""
+    private var variableCustomAttribute: String = ""
     
     // コンピューテッドプロパティで、getキーワードを省略したときのreturnを抽出するかを判断するために使う
     // getキーワードを検査したときにtrueにする
     // このフラグがfalseのときにreturnを検査したら、getキーワードが省略されているので、returnを抽出する
     // visitPre()でfalseに初期化する
-    private var passedGetKeywordOfVariableFlag = false
+    private var passedGetKeywordOfVariableFlag: Bool = false
     
     // variableの初期値を文字列として一時的に保持する
     // visitPre()で""に初期化する
     // visitPost()でresultArrayに.append()する
-    private var initialValueOfVariable = ""
+    private var initialValueOfVariable: String = ""
     
     // functionの引数1つの外部引数名と内部引数名を文字列として一時的に保持する
     // visitPre()で[]に初期化する
     // visit()でFunctionParameterSyntax内の最初の":"を検査したとき、この配列の要素をresultArrayにタグとともに.append()する
-    private var functionParameterNames = [String]()
+    private var functionParameterNames: [String] = [String]()
     
     // FunctionDeclSyntax内のFunctionParameterSyntax内で最初の":"を検査した後trueになる
     // 引数名と型を区切る":"と、辞書やタプル中の":"を区別するために使う
     // visitPre()でfalseに初期化する
-    private var passedFunctionParameterOfFunctionDeclFirstColonFlag = false
+    private var passedFunctionParameterOfFunctionDeclFirstColonFlag: Bool = false
     
     // functionのデフォルト引数のデフォルト値を文字列として一時的に保持する
     // visitPre()で""に初期化する
     // visit()でtoken.textを追加していく
-    private var initialValueOfFunctionParameter = ""
+    private var initialValueOfFunctionParameter: String = ""
     
     // initializerのデフォルト引数のデフォルト値を文字列として一時的に保持する
     // visitPre()で""に初期化する
     // visit()でtoken.textを追加していく
-    private var initialValueOfInitializerParameter = ""
+    private var initialValueOfInitializerParameter: String = ""
     
     // 抽出したclassの名前を格納する
     // visit()でclassの名前を.append()する
     // resultArrayを解析するとき、抽出したconformedProtocolOrInheritedClassByClassとこれの要素を比較して、一致したら継承しているクラスの名前
     // 一致しなかったら準拠しているプロトコルの名前
     // getClassNameArray()で出力する
-    private var classNameArray = [String]()
+    private var classNameArray: [String] = [String]()
     
     // enumのローバリューの基本的な型
     // addConformedProtocolName()でenumのInheritedTypeListSyntaxを抽出するとき、token.textと比較する
     // 配列の要素のどれかと一致したら、準拠しているプロトコルではなく、ローバリューの型
-    private let rawvalueType = ["String", "Character", "Int", "Double", "Float"]
+    private let rawvalueType: [String] = ["String", "Character", "Int", "Double", "Float"]
     
     // enumのローバリューを文字列として一時的に保持する
     // visitPre()で""に初期化する
     // visit()でtoken.textを追加していく
-    private var rawvalueString = ""
+    private var rawvalueString: String = ""
     
     // InitializerDeclSyntax内のFunctionParameterSyntax内で最初の":"を検査した後trueになる
     // visit()内でtokenKindがidentifier()のとき、これがfalseなら引数名、trueなら型
     // visitPre()でfalseに初期化する
-    private var passedFunctionParameterOfInitializerDeclFirstColonFlag = false
+    private var passedFunctionParameterOfInitializerDeclFirstColonFlag: Bool = false
     
     // 辞書のKeyとValueを区別するために使う
     // Keyを抽出後、":"を検査したときにtrueになる
     // visit()内でtokenKindがidentifier()のとき、これがfalseならKey、trueならValue
     // visitPre()でfalseに初期化する
-    private var passedColonOfDictionaryTypeSyntaxFlag = false
+    private var passedColonOfDictionaryTypeSyntaxFlag: Bool = false
     
     // typealiasの連想型名と型を区別するために使う
     // 連想型を抽出後、"="を検査したときにtrueになる
     // visitPre()でfalseに初期化する
-    private var passedEqualOfTypealiasDeclFlag = false
+    private var passedEqualOfTypealiasDeclFlag: Bool = false
     
     // genericsの型引数と、それが準拠しているprotocolまたはスーパークラスを区別するために使う
     // ":"を検査したときにtrueになる
     // falseなら型引数、trueならprotocolまたはスーパークラス
     // visitPre()でfalseに初期化する
-    private var passedColonOfGenericParameterFlag = false
+    private var passedColonOfGenericParameterFlag: Bool = false
     
     override func visitPre(_ node: Syntax) {
         let currentSyntaxNodeType = "\(node.syntaxNodeType)"
@@ -1002,33 +1002,33 @@ final class TokenVisitor: SyntaxRewriter {
     
     // syntaxNodeTypeStackに応じて、準拠しているもの(struct, class, ...)とプロトコルの名前のタグをresultArrayに追加する
     private func addConformedProtocolName(protocolName: String) {
-        if syntaxNodeTypeStack[currentPositionInStack - 1] == SyntaxNodeType.structDeclSyntax {
-            // structの宣言中のとき
-            resultArray.append(SyntaxTag.ConformedProtocolByStruct.string + SyntaxTag.Space.string + protocolName)
-        } else if syntaxNodeTypeStack[currentPositionInStack - 1] == SyntaxNodeType.classDeclSyntax {
-            // classの宣言中のとき
-            // 継承と、プロトコルへの準拠のどちらか判別できない
-            resultArray.append(SyntaxTag.ConformedProtocolOrInheritedClassByClass.string + SyntaxTag.Space.string + protocolName)
-        } else if syntaxNodeTypeStack[currentPositionInStack - 1] == SyntaxNodeType.enumDeclSyntax {
-            // enumの宣言中のとき
-            // ローバリューの型の宣言と、プロトコルへの準拠のどちらか判別できない
-            if compareRawvalueType(with: protocolName) {
-                // ローバリューの型を宣言しているとき
-                resultArray.append(SyntaxTag.RawvalueType.string + SyntaxTag.Space.string + protocolName)
-            } else {
-                // 準拠しているプロトコルを宣言しているとき
-                resultArray.append(SyntaxTag.ConformedProtocolByEnum.string + SyntaxTag.Space.string + protocolName)
-            }
-        } else if syntaxNodeTypeStack[currentPositionInStack - 1] == SyntaxNodeType.protocolDeclSyntax {
-            // protocolの宣言中のとき
-            resultArray.append(SyntaxTag.ConformedProtocolByProtocol.string + SyntaxTag.Space.string + protocolName)
-        } else if syntaxNodeTypeStack[currentPositionInStack - 1] == SyntaxNodeType.associatedtypeDeclSyntax {
-            // protocolで連想型の型制約を宣言中のとき
-            resultArray.append(SyntaxTag.ConformedProtocolOrInheritedClassByAssociatedType.string + SyntaxTag.Space.string + protocolName)
-        } else if syntaxNodeTypeStack[currentPositionInStack - 1] == SyntaxNodeType.extensionDeclSyntax {
-            // extensionの宣言中のとき
-            resultArray.append(SyntaxTag.ConformedProtocolByExtension.string + SyntaxTag.Space.string + protocolName)
-        }
+//        if syntaxNodeTypeStack[currentPositionInStack - 1] == SyntaxNodeType.structDeclSyntax {
+//            // structの宣言中のとき
+//            resultArray.append(SyntaxTag.ConformedProtocolByStruct.string + SyntaxTag.Space.string + protocolName)
+//        } else if syntaxNodeTypeStack[currentPositionInStack - 1] == SyntaxNodeType.classDeclSyntax {
+//            // classの宣言中のとき
+//            // 継承と、プロトコルへの準拠のどちらか判別できない
+//            resultArray.append(SyntaxTag.ConformedProtocolOrInheritedClassByClass.string + SyntaxTag.Space.string + protocolName)
+//        } else if syntaxNodeTypeStack[currentPositionInStack - 1] == SyntaxNodeType.enumDeclSyntax {
+//            // enumの宣言中のとき
+//            // ローバリューの型の宣言と、プロトコルへの準拠のどちらか判別できない
+//            if compareRawvalueType(with: protocolName) {
+//                // ローバリューの型を宣言しているとき
+//                resultArray.append(SyntaxTag.RawvalueType.string + SyntaxTag.Space.string + protocolName)
+//            } else {
+//                // 準拠しているプロトコルを宣言しているとき
+//                resultArray.append(SyntaxTag.ConformedProtocolByEnum.string + SyntaxTag.Space.string + protocolName)
+//            }
+//        } else if syntaxNodeTypeStack[currentPositionInStack - 1] == SyntaxNodeType.protocolDeclSyntax {
+//            // protocolの宣言中のとき
+//            resultArray.append(SyntaxTag.ConformedProtocolByProtocol.string + SyntaxTag.Space.string + protocolName)
+//        } else if syntaxNodeTypeStack[currentPositionInStack - 1] == SyntaxNodeType.associatedtypeDeclSyntax {
+//            // protocolで連想型の型制約を宣言中のとき
+//            resultArray.append(SyntaxTag.ConformedProtocolOrInheritedClassByAssociatedType.string + SyntaxTag.Space.string + protocolName)
+//        } else if syntaxNodeTypeStack[currentPositionInStack - 1] == SyntaxNodeType.extensionDeclSyntax {
+//            // extensionの宣言中のとき
+//            resultArray.append(SyntaxTag.ConformedProtocolByExtension.string + SyntaxTag.Space.string + protocolName)
+//        }
     } // func addConformedProtocolName(protocolName: String)
     
     // enumのInheritedTypeListSyntaxで抽出したtoken.textが、ローバリューの型を宣言しているかを調べる
@@ -1067,4 +1067,3 @@ final class TokenVisitor: SyntaxRewriter {
         print("-----------------------------\n")
     }
 }
-
